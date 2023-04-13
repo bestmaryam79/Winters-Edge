@@ -112,12 +112,12 @@ NavMeshSettings:
     agentClimb: 0.4
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
-    minRegionArea: 2
-    manualCellSize: 0
-    cellSize: 0.16666667
+    minRegionArea: 3.77
+    manualCellSize: 1
+    cellSize: 0.02
     manualTileSize: 0
     tileSize: 256
-    accuratePlacement: 0
+    accuratePlacement: 1
     maxJobWorkers: 0
     preserveTilesOutsideBounds: 0
     debug:
@@ -1342,6 +1342,7 @@ GameObject:
   - component: {fileID: 919132149026768457}
   - component: {fileID: 919132149026768456}
   - component: {fileID: 919132149026768458}
+  - component: {fileID: 919132149026768459}
   m_Layer: 0
   m_Name: Warrok W Kurniawan
   m_TagString: Untagged
@@ -1405,7 +1406,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxRoamDistance: 30
   gravityPower: -9.8
+  groundClearance: 0.155
+  groundDistance: 0
   characterState: 0
+  motionVector: {x: 0, y: 0, z: 0}
+  gravityVector: {x: 0, y: 0, z: 0}
 --- !u!54 &919132149026768458
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1422,6 +1427,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!143 &919132149026768459
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132149026768454}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2.6
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1.07, z: 0}
 --- !u!4 &1031632034946508449
 Transform:
   m_ObjectHideFlags: 0
