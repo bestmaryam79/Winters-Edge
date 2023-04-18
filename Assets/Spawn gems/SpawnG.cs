@@ -11,6 +11,8 @@ public class SpawnG : MonoBehaviour
 
     public GameObject gemPrefab;
 
+    public GameObject player;
+
     // Declaring variables for the area in which to spawn objects
     private Vector3 terrainPosition;
     private Vector3 terrainSize;
@@ -26,6 +28,8 @@ public class SpawnG : MonoBehaviour
         Terrain terrain = Terrain.activeTerrain;
         terrainPosition = terrain.transform.position;
         terrainSize = terrain.terrainData.size;
+
+        player = GameObject.FindGameObjectWithTag("Player");
 
         // Loop to spawn the object "numSpawns" times
         for (int i = 0; i < numSpawns; i++)
@@ -71,7 +75,7 @@ public class SpawnG : MonoBehaviour
         newGem.tag = "Gem";
     }
 
-    void OnTriggerEnter(Collider other)
+    /*void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Gem"))
         {
@@ -81,5 +85,30 @@ public class SpawnG : MonoBehaviour
 
             // Update UI or other relevant code to display the new gem count...
         }
+    
     }
+    */
+
+    private void OnTriggerEnter(Collider other)
+    {
+
+
+
+        switch (other.gameObject.tag)
+        {
+            
+            case "Player":
+            Debug.Log(other.name);
+            CollectGems playercollectscript = other.gameObject.GetComponent<CollectGems>();
+            playercollectscript.collectedGems = true;
+            playercollectscript.CollectedGemFunction();
+            Destroy(gameObject);
+                break;
+
+        }
+
+    }
+
+
+
 }

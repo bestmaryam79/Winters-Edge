@@ -6,14 +6,22 @@ using TMPro;
 
 public class CollectGems : MonoBehaviour
 {
-    public int counter = 0;
+    public bool collectedGems;
+    int counter;
     public TextMeshProUGUI textGems;
+
+    public CollectGems(bool collectedGems)
+    {
+        this.collectedGems = collectedGems;
+    }
+
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         counter = 0;
-        UpdateGemText();
     }
 
     // Update is called once per frame
@@ -26,13 +34,7 @@ public class CollectGems : MonoBehaviour
     public void CollectedGemFunction()
     {
         counter++;
-        UpdateGemText();
-        Debug.Log("A gem has been collected. Total gems collected: " + counter);
-    }
-
-    // This method updates the text in the UI to show the number of collected gems
-    void UpdateGemText()
-    {
-        textGems.text = "Gems: " + counter;
+        textGems.text = ("Gems" + counter.ToString());
+        Debug.Log("The collected gem function has just been called " + counter);
     }
 }

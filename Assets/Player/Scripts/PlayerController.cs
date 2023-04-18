@@ -15,9 +15,14 @@ public class PlayerController : MonoBehaviour
     public GameObject mele;
     private gameManager manager;
 
+    public float health = 100;
+
+    public bool takingDamage;
+
     [Range(1, 4)] public float movementSpeed = 2; // the movement speed of the player
     [Range(0, .5f)] public float groundClearance; // the clearance from the ground
     [Range(0, 1f)] public float groundDistance;
+    [Range(0, 1)] public float takingDamageTimer;
 
     public float gravityPower = -9.8f; // the power of gravity applied to the player
     public float jumpValue = -9.8f; // the force of the jump
@@ -53,6 +58,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         movement();
+        playerStates();
 
         if(Input.GetKeyDown(KeyCode.A))
         {
@@ -92,6 +98,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+
     // If the player presses the jump button, jump
     void jump()
     {
@@ -126,7 +133,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    /*void playerStates()
+    void playerStates()
     {
         if (characterState == 0 && !takingDamage)
         {
@@ -137,7 +144,18 @@ public class PlayerController : MonoBehaviour
             combatMovement();
         }
     }
-    */
+
+    void peacefulMovement()
+    {
+
+    }
+
+    void combatMovement()
+    {
+
+
+    }
+ 
 
     // Show if the player is grounded or not in the GUI
     void OnGUI()
@@ -155,5 +173,17 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - groundDistance, transform.position.z), groundClearance);
     }
 
+    public void recieveDamage(float value)
+    {
+        //take Damage >>
+        if (!takingDamage)
+        {
+            health -= value;
+            animator.SetTrigger("takeDamage");
+            Executer bb = new Executer(this);
+            bb.DelayExecute(takingDamageTimer, x=> takingDamage = false);
 
+
+        }
+    }
 }
