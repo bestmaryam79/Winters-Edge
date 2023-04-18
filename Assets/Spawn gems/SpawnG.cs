@@ -7,6 +7,9 @@ public class SpawnG : MonoBehaviour
     // Declaring public variables for the object to spawn and number of times to spawn it
     public GameObject itemToSpawn;
     public int numSpawns = 7;
+    public int numGemsCollected = 0;
+
+    public GameObject gemPrefab;
 
     // Declaring variables for the area in which to spawn objects
     private Vector3 terrainPosition;
@@ -18,6 +21,7 @@ public class SpawnG : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        numGemsCollected = 0;
         // Get the active terrain's position and size
         Terrain terrain = Terrain.activeTerrain;
         terrainPosition = terrain.transform.position;
@@ -51,5 +55,31 @@ public class SpawnG : MonoBehaviour
 
         // Rotate the object around its up axis (y-axis) at the speed specified by the rotationSpeed variable
         item.transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+    }
+
+    void SpawnGem()
+    {
+        // Instantiate the gem prefab
+        GameObject newGem = Instantiate(gemPrefab, transform.position, Quaternion.identity);
+
+        // Add a box collider component to the gem object
+        BoxCollider collider = newGem.AddComponent<BoxCollider>();
+
+        // Set the size of the box collider to match the size of the gem object
+        collider.size = newGem.GetComponent<Renderer>().bounds.size;
+
+        newGem.tag = "Gem";
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Gem"))
+        {
+            Destroy(other.gameObject);
+
+            numGemsCollected++;
+
+            // Update UI or other relevant code to display the new gem count...
+        }
     }
 }
