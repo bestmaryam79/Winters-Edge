@@ -180,8 +180,8 @@ public class PlayerController : MonoBehaviour
         {
             health -= value;
             animator.SetTrigger("takeDamage");
-            Executer bb = new Executer(this);
-            bb.DelayExecute(takingDamageTimer, x=> takingDamage = false);
+//            Executer bb = new Executer(this);
+//            bb.DelayExecute(takingDamageTimer, x=> takingDamage = false);
 
 
         }

@@ -985,7 +985,7 @@ MeshCollider:
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: -6759905434855407535, guid: 7e0cf8e4e1f551645943079f35af7ac0, type: 3}
 --- !u!95 &3781750135757259674
 Animator:
   serializedVersion: 5
@@ -1024,9 +1024,12 @@ MonoBehaviour:
   gravityVector: {x: 0, y: 0, z: 0}
   animator: {fileID: 0}
   mele: {fileID: 0}
-  movementSpeed: 2
+  health: 100
+  takingDamage: 0
+  movementSpeed: 4
   groundClearance: 0.05
   groundDistance: 0
+  takingDamageTimer: 0
   gravityPower: -9.8
   jumpValue: -9.8
   characterState: 0

@@ -17,24 +17,17 @@ public class GemZ : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    public void OnCollision(Collider other)
     {
-
-
-
         switch (other.gameObject.tag)
         {
-
             case "Player":
                 Debug.Log(other.name);
-                CollectGems playercollectscript = other.gameObject.GetComponent<CollectGems>();
-                playercollectscript.collectedGems = true;
-                playercollectscript.CollectedGemFunction();
+                //CollectGems playercollectscript = other.gameObject.GetComponent<CollectGems>();
+                //playercollectscript.collectedGems = true;
+                //playercollectscript.CollectedGemFunction();
                 Destroy(gameObject);
                 break;
-
         }
-
     }
-
 }

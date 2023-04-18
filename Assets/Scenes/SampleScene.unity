@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383d4b33ee1596e438dee41cecf34c20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemToSpawn: {fileID: 1940535376811764, guid: 381c30b6d7bd64ac198546e129599840, type: 3}
+  itemToSpawn: {fileID: 2656189480640728982, guid: e1bc4ea3eaeae8b468f910689650b17e, type: 3}
   numSpawns: 200
   numGemsCollected: 0
   gemPrefab: {fileID: 1940535376811764, guid: 381c30b6d7bd64ac198546e129599840, type: 3}
