@@ -4,30 +4,14 @@ using UnityEngine;
 
 public class GemZ : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    //public GameObject gemPrefab;
+    public void OnCollisionEnter(Collision collision)
     {
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
-    public void OnCollision(Collider other)
-    {
-        switch (other.gameObject.tag)
+        if(collision.gameObject.tag == "Gem")
         {
-            case "Player":
-                Debug.Log(other.name);
-                //CollectGems playercollectscript = other.gameObject.GetComponent<CollectGems>();
-                //playercollectscript.collectedGems = true;
-                //playercollectscript.CollectedGemFunction();
-                Destroy(gameObject);
-                break;
+            Debug.Log("Gem connected");
+            Destroy(gameObject);
         }
     }
 }

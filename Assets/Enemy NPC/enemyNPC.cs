@@ -35,8 +35,8 @@ public class enemyNPC : MonoBehaviour
     void Update()
     {
         animations();
-        Roam();
         gravity();
+        Roam();
     }
 
     void gravity()
@@ -54,17 +54,14 @@ public class enemyNPC : MonoBehaviour
 
     void Roam()
     {
-        if (characterState != 0) return;
+        //if (characterState != 0) return;
+        //int timeTo = 0;
 
-        if (Time.time > RoamTimer)
-        {
-            float a = Random.Range(0, 2);
-            RoamTimer = Time.time + 20;
-            navMeshAgent.SetDestination(new Vector3(transform.position.x + Random.Range(maxRoamDistance/2, maxRoamDistance) * (a == 1 ? 1 : -1),0 
-            ,transform.position.z + Random.Range(maxRoamDistance / 2, maxRoamDistance) * (a == 1 ? 1 : -1)));
-
-        }
-
+        
+        float a = Random.Range(0, 2);
+        RoamTimer = Time.time + 20;
+        navMeshAgent.SetDestination(new Vector3(transform.position.x + Random.Range(maxRoamDistance/2, maxRoamDistance) * (a == 1 ? 1 : -1),0 
+        ,transform.position.z + Random.Range(maxRoamDistance / 2, maxRoamDistance) * (a == 1 ? 1 : -1)));
     }
 
 
